@@ -26,7 +26,7 @@ func (User) Edges() []ent.Edge {
 	return []ent.Edge{}
 }
 
-// Mixin of the User
+// Mixin of the User.
 func (User) Mixin() []ent.Mixin {
 	return []ent.Mixin{
 		TimeMixin{},
