@@ -14,7 +14,7 @@ type Config struct {
 		Addr     string
 		Username string
 		Password string
-		Table    string
+		Database string
 	}
 }
 

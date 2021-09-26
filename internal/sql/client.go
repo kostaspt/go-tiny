@@ -14,7 +14,7 @@ import (
 )
 
 func NewClient(ctx context.Context, c *config.Config) (client *ent.Client, cleanup func(), err error) {
-	db, err := sql.Open("pgx", fmt.Sprintf("postgresql://%s:%s@%s/%s", c.SQL.Username, c.SQL.Password, c.SQL.Addr, c.SQL.Table))
+	db, err := sql.Open("pgx", fmt.Sprintf("postgresql://%s:%s@%s/%s", c.SQL.Username, c.SQL.Password, c.SQL.Addr, c.SQL.Database))
 	if err != nil {
 		return
 	}
