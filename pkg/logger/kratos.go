@@ -10,7 +10,7 @@ var _ klog.Logger = (*Wrapper)(nil)
 
 type Wrapper struct{}
 
-func NewWrapper() *Wrapper {
+func NewKratosWrapper() *Wrapper {
 	return &Wrapper{}
 }
 

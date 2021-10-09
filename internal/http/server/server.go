@@ -20,7 +20,7 @@ var ProviderSet = wire.NewSet(NewServer, NewMiddleware)
 func NewServer(c *config.Config, h *handler.Handler, m *Middleware) *transphttp.Server {
 	opts := []transphttp.ServerOption{
 		transphttp.Timeout(10 * time.Second),
-		transphttp.Logger(logger.NewWrapper()),
+		transphttp.Logger(logger.NewKratosWrapper()),
 	}
 
 	if c.Server.Port > 0 {
