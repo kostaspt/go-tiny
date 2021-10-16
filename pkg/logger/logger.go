@@ -1,6 +1,7 @@
 package logger
 
 import (
+	"flag"
 	"os"
 
 	"github.com/rs/zerolog"
@@ -8,8 +9,24 @@ import (
 )
 
 func Setup(name, version string) {
-	log.Logger = log.
-		Output(zerolog.ConsoleWriter{Out: os.Stderr}).
+	var l zerolog.Logger
+
+	inDebugMode := flag.Bool("debug", false, "sets logger for debugging")
+	inDevMode := flag.Bool("dev", false, "sets logger for development")
+	flag.Parse()
+
+	if *inDevMode {
+		l = zerolog.New(zerolog.ConsoleWriter{Out: os.Stderr})
+	} else {
+		l = zerolog.New(os.Stderr)
+	}
+
+	zerolog.SetGlobalLevel(zerolog.InfoLevel)
+	if *inDevMode || *inDebugMode {
+		zerolog.SetGlobalLevel(zerolog.TraceLevel)
+	}
+
+	log.Logger = l.
 		With().
 		Caller().
 		Stack().
