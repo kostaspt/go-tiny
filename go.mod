@@ -4,6 +4,7 @@ go 1.17
 
 require (
 	entgo.io/ent v0.9.1
+	github.com/ThreeDotsLabs/watermill v1.1.1
 	github.com/gavv/httpexpect/v2 v2.3.1
 	github.com/go-kratos/kratos/v2 v2.0.5
 	github.com/go-playground/validator/v10 v10.9.0
@@ -47,11 +48,13 @@ require (
 	github.com/klauspost/compress v1.12.2 // indirect
 	github.com/labstack/gommon v0.3.0 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
+	github.com/lithammer/shortuuid/v3 v3.0.4 // indirect
 	github.com/magiconair/properties v1.8.5 // indirect
 	github.com/mattn/go-colorable v0.1.8 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/matttproud/golang_protobuf_extensions v1.0.1 // indirect
 	github.com/mitchellh/mapstructure v1.4.2 // indirect
+	github.com/oklog/ulid v1.3.1 // indirect
 	github.com/pelletier/go-toml v1.9.4 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/prometheus/client_golang v1.10.0 // indirect
