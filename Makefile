@@ -31,15 +31,15 @@ generate:
 
 .PHONY: test
 test:
-	go test -a -mod=vendor `$(call PACKAGES)`
+	go test -v -mod=vendor `$(call PACKAGES)`
 
 .PHONY: test-race
 test-race:
-	go test -a -race -mod=vendor `$(call PACKAGES)`
+	go test -v -race -mod=vendor `$(call PACKAGES)`
 
 .PHONY: test-api
 test-api:
-	go test -a -v -mod=vendor -tags=api_test ./test/...
+	go test -p 1 -count=1 -cpu=1 -v -mod=vendor -tags=api_test ./test/...
 
 .PHONY: vet
 vet:
