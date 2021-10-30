@@ -7,6 +7,7 @@ import (
 	"github.com/go-kratos/kratos/v2/transport/http"
 	"github.com/kostaspt/go-tiny/config"
 	"github.com/kostaspt/go-tiny/pkg/logger"
+	"github.com/rs/zerolog"
 	"github.com/spf13/pflag"
 )
 
@@ -25,12 +26,13 @@ func newApp(srv *http.Server) *kratos.App {
 }
 
 func main() {
-	logger.Setup(Name, Version)
+	port := pflag.Uint16P("port", "p", 4000, "Server's port")
+	logLevel := pflag.Int8P("log-level", "l", int8(zerolog.InfoLevel), "Logger's level of reporting")
+	pflag.Parse()
 
-	var port uint16
-	pflag.Uint16VarP(&port, "port", "p", 4000, "Server's port")
+	logger.Setup(Name, Version, zerolog.Level(*logLevel))
 
-	c, err := config.New(port)
+	c, err := config.New(*port)
 	if err != nil {
 		panic(err)
 	}
