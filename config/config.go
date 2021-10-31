@@ -18,10 +18,10 @@ type Config struct {
 	}
 }
 
-func New(port uint16) (c *Config, err error) {
+func New(port *uint16) (c *Config, err error) {
 	v := initViper()
 
-	if port > 0 {
+	if port != nil && *port > 0 {
 		v.Set("server_port", port)
 	}
 

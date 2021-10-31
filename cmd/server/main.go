@@ -32,7 +32,7 @@ func main() {
 
 	logger.Setup(Name, Version, zerolog.Level(*logLevel))
 
-	c, err := config.New(*port)
+	c, err := config.New(port)
 	if err != nil {
 		panic(err)
 	}

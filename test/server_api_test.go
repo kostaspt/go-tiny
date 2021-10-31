@@ -17,7 +17,7 @@ import (
 )
 
 func StartServer(ctx context.Context, t *testing.T) (*httpexpect.Expect, *ent.Client, func(), func()) {
-	c, err := config.New(0)
+	c, err := config.New(nil)
 	assert.NoError(t, err)
 
 	s, cleanup, err := sql.NewClient(ctx, c)
