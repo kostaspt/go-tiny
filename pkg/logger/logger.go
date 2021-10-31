@@ -22,6 +22,7 @@ func Setup(name, version string, level zerolog.Level) {
 		With().
 		Caller().
 		Stack().
+		Timestamp().
 		Str("service", name).
 		Str("version", version).
 		Logger()
