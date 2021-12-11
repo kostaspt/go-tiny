@@ -5,26 +5,26 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-var _ retryablehttp.LeveledLogger = (*RetryableHttpLogger)(nil)
+var _ retryablehttp.LeveledLogger = (*RetryableHttp)(nil)
 
-type RetryableHttpLogger struct{}
+type RetryableHttp struct{}
 
-func NewRetryableHttpLogger() *RetryableHttpLogger {
-	return &RetryableHttpLogger{}
+func NewForRetryableHttp() *RetryableHttp {
+	return &RetryableHttp{}
 }
 
-func (r RetryableHttpLogger) Error(format string, v ...interface{}) {
+func (l RetryableHttp) Error(format string, v ...interface{}) {
 	log.Error().Msgf(format, v)
 }
 
-func (r RetryableHttpLogger) Warn(format string, v ...interface{}) {
+func (l RetryableHttp) Warn(format string, v ...interface{}) {
 	log.Warn().Msgf(format, v)
 }
 
-func (r RetryableHttpLogger) Info(format string, v ...interface{}) {
+func (l RetryableHttp) Info(format string, v ...interface{}) {
 	log.Info().Msgf(format, v)
 }
 
-func (r RetryableHttpLogger) Debug(format string, v ...interface{}) {
+func (l RetryableHttp) Debug(format string, v ...interface{}) {
 	log.Debug().Msgf(format, v)
 }

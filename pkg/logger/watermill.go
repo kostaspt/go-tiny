@@ -6,35 +6,35 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-var _ watermill.LoggerAdapter = (*WatermillLogger)(nil)
+var _ watermill.LoggerAdapter = (*Watermill)(nil)
 
-type WatermillLogger struct{}
+type Watermill struct{}
 
-func NewWatermillLogger() *WatermillLogger {
-	return &WatermillLogger{}
+func NewForWatermill() *Watermill {
+	return &Watermill{}
 }
 
-func (w WatermillLogger) Error(msg string, err error, fields watermill.LogFields) {
-	w.WithFields(log.Error().Err(err), fields).Msg(msg)
+func (l Watermill) Error(msg string, err error, fields watermill.LogFields) {
+	l.WithFields(log.Error().Err(err), fields).Msg(msg)
 }
 
-func (w WatermillLogger) Info(msg string, fields watermill.LogFields) {
-	w.WithFields(log.Info(), fields).Msg(msg)
+func (l Watermill) Info(msg string, fields watermill.LogFields) {
+	l.WithFields(log.Info(), fields).Msg(msg)
 }
 
-func (w WatermillLogger) Debug(msg string, fields watermill.LogFields) {
-	w.WithFields(log.Debug(), fields).Msg(msg)
+func (l Watermill) Debug(msg string, fields watermill.LogFields) {
+	l.WithFields(log.Debug(), fields).Msg(msg)
 }
 
-func (w WatermillLogger) Trace(msg string, fields watermill.LogFields) {
-	w.WithFields(log.Trace(), fields).Msg(msg)
+func (l Watermill) Trace(msg string, fields watermill.LogFields) {
+	l.WithFields(log.Trace(), fields).Msg(msg)
 }
 
-func (w WatermillLogger) With(fields watermill.LogFields) watermill.LoggerAdapter {
+func (l Watermill) With(fields watermill.LogFields) watermill.LoggerAdapter {
 	panic("implement me")
 }
 
-func (w WatermillLogger) WithFields(e *zerolog.Event, fields watermill.LogFields) *zerolog.Event {
+func (l Watermill) WithFields(e *zerolog.Event, fields watermill.LogFields) *zerolog.Event {
 	for i, v := range fields {
 		e.Interface(i, v)
 	}

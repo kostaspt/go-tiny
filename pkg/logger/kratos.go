@@ -6,15 +6,15 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-var _ klog.Logger = (*KratosLogger)(nil)
+var _ klog.Logger = (*Kratos)(nil)
 
-type KratosLogger struct{}
+type Kratos struct{}
 
-func NewKratosLogger() *KratosLogger {
-	return &KratosLogger{}
+func NewForKratos() *Kratos {
+	return &Kratos{}
 }
 
-func (w KratosLogger) Log(level klog.Level, v ...interface{}) error {
+func (l Kratos) Log(level klog.Level, v ...interface{}) error {
 	logger := log.Level(zerolog.Level(level))
 	logger.Print(v...)
 	return nil
