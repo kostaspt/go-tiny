@@ -5,22 +5,22 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-var _ cron.Logger = (*CronLogger)(nil)
+var _ cron.Logger = (*Cron)(nil)
 
-type CronLogger struct{}
+type Cron struct{}
 
-func NewCronLogger() *CronLogger {
-	return &CronLogger{}
+func NewForCron() *Cron {
+	return &Cron{}
 }
 
-func (CronLogger) Error(err error, format string, v ...interface{}) {
+func (Cron) Error(err error, format string, v ...interface{}) {
 	log.Error().Err(err).Msgf(format, v...)
 }
 
-func (CronLogger) Info(format string, v ...interface{}) {
+func (Cron) Info(format string, v ...interface{}) {
 	log.Info().Msgf(format, v...)
 }
 
-func (CronLogger) Printf(format string, v ...interface{}) {
+func (Cron) Printf(format string, v ...interface{}) {
 	log.Debug().Msgf(format, v...)
 }

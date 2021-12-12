@@ -14,7 +14,7 @@ func NewForKratos() *Kratos {
 	return &Kratos{}
 }
 
-func (l Kratos) Log(level klog.Level, v ...interface{}) error {
+func (Kratos) Log(level klog.Level, v ...interface{}) error {
 	logger := log.Level(zerolog.Level(level))
 	logger.Print(v...)
 	return nil
