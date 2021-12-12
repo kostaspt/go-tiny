@@ -15,7 +15,11 @@ func NewForKratos() *Kratos {
 }
 
 func (Kratos) Log(level klog.Level, v ...interface{}) error {
-	logger := log.Level(zerolog.Level(level + 1))
-	logger.Print(v...)
+	l := log.WithLevel(zerolog.Level(level + 1))
+	for i := 0; i < len(v); i += 2 {
+		l.Interface(v[i].(string), v[i+1])
+	}
+	l.Send()
+
 	return nil
 }
