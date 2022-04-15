@@ -21,7 +21,7 @@ COPY . .
 RUN make build
 
 ### Serve
-FROM alpine:3.14.2
+FROM alpine:3.15.4
 WORKDIR /app
 
 ARG SERVER_PORT=4000
