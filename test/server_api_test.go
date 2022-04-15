@@ -13,15 +13,14 @@ import (
 	"github.com/kostaspt/go-tiny/config"
 	"github.com/kostaspt/go-tiny/internal/http/handler"
 	"github.com/kostaspt/go-tiny/internal/http/server"
-	"github.com/kostaspt/go-tiny/internal/sql"
-	"github.com/kostaspt/go-tiny/internal/sql/ent"
+	"github.com/kostaspt/go-tiny/internal/storage/sql"
 )
 
-func StartServer(ctx context.Context, t *testing.T) (*httpexpect.Expect, *ent.Client, func(), func()) {
+func StartServer(ctx context.Context, t *testing.T) (*httpexpect.Expect, *sql.DB, func()) {
 	c, err := config.New(nil)
 	assert.NoError(t, err)
 
-	s, cleanup, err := sql.NewClient(ctx, c)
+	s, cleanup, err := sql.NewConnection(ctx, c)
 	assert.NoError(t, err)
 
 	h := handler.NewHandler(c)
@@ -39,11 +38,8 @@ func StartServer(ctx context.Context, t *testing.T) (*httpexpect.Expect, *ent.Cl
 		},
 	})
 
-	return e, s,
-		func() {
-			s.User.Delete().Exec(ctx)
-		}, func() {
-			cleanup()
-			testServer.Close()
-		}
+	return e, s, func() {
+		cleanup()
+		testServer.Close()
+	}
 }

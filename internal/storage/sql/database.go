@@ -2,4 +2,4 @@ package sql
 
 import "github.com/google/wire"
 
-var ProviderSet = wire.NewSet(NewClient)
+var ProviderSet = wire.NewSet(NewConnection)
