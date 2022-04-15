@@ -2,6 +2,7 @@ package handler
 
 import (
 	"github.com/google/wire"
+
 	"github.com/kostaspt/go-tiny/config"
 )
 

@@ -6,13 +6,14 @@ import (
 
 	transphttp "github.com/go-kratos/kratos/v2/transport/http"
 	"github.com/google/wire"
+	"github.com/labstack/echo-contrib/prometheus"
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
+
 	"github.com/kostaspt/go-tiny/config"
 	"github.com/kostaspt/go-tiny/internal/http/handler"
 	"github.com/kostaspt/go-tiny/pkg/logger"
 	"github.com/kostaspt/go-tiny/pkg/validator"
-	"github.com/labstack/echo-contrib/prometheus"
-	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
 )
 
 var ProviderSet = wire.NewSet(NewServer, NewMiddleware)

@@ -8,12 +8,13 @@ import (
 	"testing"
 
 	"github.com/gavv/httpexpect/v2"
+	"github.com/stretchr/testify/assert"
+
 	"github.com/kostaspt/go-tiny/config"
 	"github.com/kostaspt/go-tiny/internal/http/handler"
 	"github.com/kostaspt/go-tiny/internal/http/server"
 	"github.com/kostaspt/go-tiny/internal/sql"
 	"github.com/kostaspt/go-tiny/internal/sql/ent"
-	"github.com/stretchr/testify/assert"
 )
 
 func StartServer(ctx context.Context, t *testing.T) (*httpexpect.Expect, *ent.Client, func(), func()) {

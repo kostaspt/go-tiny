@@ -8,9 +8,10 @@ import (
 	"entgo.io/ent/dialect"
 	entsql "entgo.io/ent/dialect/sql"
 	_ "github.com/jackc/pgx/v4/stdlib"
+	"github.com/kostaspt/go-tiny/internal/sql/ent/migrate"
+
 	"github.com/kostaspt/go-tiny/config"
 	"github.com/kostaspt/go-tiny/internal/sql/ent"
-	"github.com/kostaspt/go-tiny/internal/sql/ent/migrate"
 )
 
 func NewClient(ctx context.Context, c *config.Config) (client *ent.Client, cleanup func(), err error) {

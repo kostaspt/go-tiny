@@ -5,10 +5,11 @@ import (
 
 	"github.com/go-kratos/kratos/v2"
 	"github.com/go-kratos/kratos/v2/transport/http"
-	"github.com/kostaspt/go-tiny/config"
-	"github.com/kostaspt/go-tiny/pkg/logger"
 	"github.com/rs/zerolog"
 	"github.com/spf13/pflag"
+
+	"github.com/kostaspt/go-tiny/config"
+	"github.com/kostaspt/go-tiny/pkg/logger"
 )
 
 var (
