@@ -20,7 +20,7 @@ func newApp(srv *http.Server) *kratos.App {
 	return kratos.New(
 		kratos.Name(Name),
 		kratos.Version(Version),
-		kratos.Logger(logger.NewKratosWrapper()),
+		kratos.Logger(logger.NewForKratos()),
 		kratos.Server(srv),
 	)
 }
