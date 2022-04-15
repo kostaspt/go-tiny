@@ -1,0 +1,33 @@
+version: "3.8"
+
+networks:
+  internal:
+
+volumes:
+  sql_data:
+
+services:
+  server:
+    command: ./server
+    build:
+      args:
+        SQL_ADDR: ${SQL_ADDR:-sql:5432}
+        SQL_USERNAME: ${SQL_USERNAME:-root}
+        SQL_PASSWORD: ${SQL_PASSWORD:-root}
+    restart: unless-stopped
+    networks:
+      - internal
+
+  sql:
+    image: postgres:14.2-alpine3.15
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${SQL_USERNAME:-root}
+      POSTGRES_PASSWORD: ${SQL_PASSWORD:-root}
+      POSTGRES_DB: ${SQL_DATABASE:-postgres}
+    ports:
+      - 5432:5432
+    volumes:
+      - sql_data:/var/lib/postgresql/data
+    networks:
+      - internal

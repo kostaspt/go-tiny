@@ -20,24 +20,22 @@ ENV VERSION=$VERSION
 COPY . .
 RUN make build
 
-### Serve
+### Deploy
 FROM alpine:3.15.4
 WORKDIR /app
 
-ARG SERVER_PORT=4000
+# Define and verify args
 ARG SQL_ADDR
 RUN test -n "$SQL_ADDR"
+ENV SQL_ADDR=$SQL_ADDR
 
-COPY --from=build /go/src/app/bin/server /app
+COPY --from=build /go/src/app/bin /app
 
 RUN apk add --no-cache bash
 RUN wget https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh -O /usr/local/bin/wait-for-it \
     && chmod +x /usr/local/bin/wait-for-it
 
-COPY ./cmd/server/entrypoint.sh /entrypoint.sh
+COPY ./docker/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-EXPOSE 4000
-
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["/app/server"]
