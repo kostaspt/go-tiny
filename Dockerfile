@@ -1,5 +1,5 @@
 ### Build
-FROM golang:1.17.1-alpine as build
+FROM golang:1.18.1-alpine as build
 
 LABEL org.opencontainers.image.source="REPOSITORY_URL"
 
@@ -21,7 +21,7 @@ COPY . .
 RUN make build
 
 ### Serve
-FROM alpine:3.14.2
+FROM alpine:3.15.4
 WORKDIR /app
 
 ARG SERVER_PORT=4000
