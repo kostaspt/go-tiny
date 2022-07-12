@@ -21,7 +21,7 @@ COPY . .
 RUN make build
 
 ### Deploy
-FROM alpine:3.15.4
+FROM alpine:3.16.0
 WORKDIR /app
 
 # Define and verify args
