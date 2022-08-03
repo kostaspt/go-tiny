@@ -42,7 +42,7 @@ func initViper() *viper.Viper {
 	v.AutomaticEnv()
 
 	// Server
-	viper.SetDefault("server_port", 4000)
+	v.SetDefault("server_port", 4000)
 
 	// SQL Database
 	v.SetDefault("sql_addr", "127.0.0.1:5432")
