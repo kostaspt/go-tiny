@@ -1,5 +1,5 @@
 ### Build
-FROM golang:1.18.3-alpine as build
+FROM golang:1.18.5-alpine as build
 
 LABEL org.opencontainers.image.source="REPOSITORY_URL"
 
