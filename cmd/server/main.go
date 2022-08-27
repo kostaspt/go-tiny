@@ -2,6 +2,8 @@ package main
 
 import (
 	"context"
+	"fmt"
+	"os"
 
 	"github.com/go-kratos/kratos/v2"
 	"github.com/go-kratos/kratos/v2/transport/http"
@@ -27,6 +29,13 @@ func newApp(srv *http.Server) *kratos.App {
 }
 
 func main() {
+	if err := run(); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+}
+
+func run() error {
 	port := pflag.Uint16P("port", "p", 4000, "Server's port")
 	logLevel := pflag.Int8P("log-level", "l", int8(zerolog.InfoLevel), "Logger's level of reporting")
 	pflag.Parse()
@@ -35,7 +44,7 @@ func main() {
 
 	c, err := config.New(port)
 	if err != nil {
-		panic(err)
+		return err
 	}
 
 	ctx, cancel := context.WithCancel(context.Background())
@@ -43,11 +52,9 @@ func main() {
 
 	app, cleanup, err := initApp(ctx, c)
 	if err != nil {
-		panic(err)
+		return err
 	}
 	defer cleanup()
 
-	if err = app.Run(); err != nil {
-		panic(err)
-	}
+	return app.Run()
 }
