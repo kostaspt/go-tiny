@@ -15,7 +15,7 @@ import (
 )
 
 var (
-	Name    = "my-app"
+	Name    = "app-server"
 	Version string
 )
 
