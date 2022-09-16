@@ -7,6 +7,11 @@ import (
 
 type Config struct {
 	Domain string
+	Cache  struct {
+		Addr     string
+		Username string
+		Password string
+	}
 	Server struct {
 		Port uint16
 	}

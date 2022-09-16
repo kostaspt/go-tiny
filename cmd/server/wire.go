@@ -20,8 +20,11 @@ func initApp(context.Context, *config.Config) (*kratos.App, func(), error) {
 			server.ProviderSet,
 			handler.ProviderSet,
 
-			// Database
+			// Storage
 			// sql.ProviderSet,
+			// cache.ProviderSet,
+			// wire.Bind(new(cache.Cache), new(*cache.InMemory)),
+			// wire.Bind(new(cache.Cache), new(*cache.Redis)),
 
 			newApp,
 		),
