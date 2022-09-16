@@ -19,14 +19,14 @@ services:
       - internal
 
   sql:
-    image: postgres:14.2-alpine3.15
+    image: postgres:14.5-alpine3.16
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${SQL_USERNAME:-root}
       POSTGRES_PASSWORD: ${SQL_PASSWORD:-root}
       POSTGRES_DB: ${SQL_DATABASE:-postgres}
     ports:
-      - 5432:5432
+      - "5432:5432"
     volumes:
       - sql_data:/var/lib/postgresql/data
     networks:

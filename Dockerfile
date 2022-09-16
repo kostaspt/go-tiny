@@ -1,5 +1,5 @@
 ### Build
-FROM golang:1.18.5-alpine as build
+FROM golang:1.19.1-alpine3.16 as build
 
 LABEL org.opencontainers.image.source="REPOSITORY_URL"
 
@@ -21,7 +21,7 @@ COPY . .
 RUN make build
 
 ### Deploy
-FROM alpine:3.16.1
+FROM alpine:3.16.2
 WORKDIR /app
 
 # Define and verify args
