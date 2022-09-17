@@ -38,6 +38,8 @@ func interfacesToString(parts []any) []string {
 	sp := make([]string, len(parts))
 	for i, p := range parts {
 		switch p.(type) {
+		case int, int8, int16, int32, int64, uint, uint8, uint16, uint32, uint64, uintptr:
+			s = fmt.Sprintf("%d", p)
 		case string:
 			s = p.(string)
 		default:
