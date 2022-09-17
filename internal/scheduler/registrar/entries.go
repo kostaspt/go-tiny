@@ -11,25 +11,25 @@ type entry struct {
 	job  cron.Job
 }
 
-type entries struct {
+type Entries struct {
 	dummyJob *job.Dummy
 }
 
 func NewEntries(
 	dj *job.Dummy,
-) *entries {
-	return &entries{
+) *Entries {
+	return &Entries{
 		dummyJob: dj,
 	}
 }
 
-func (e *entries) startupList() []cron.Job {
+func (e *Entries) startupList() []cron.Job {
 	return []cron.Job{
 		e.dummyJob,
 	}
 }
 
-func (e *entries) list() []entry {
+func (e *Entries) list() []entry {
 	return []entry{
 		{
 			spec: "*/5 * * * * *",

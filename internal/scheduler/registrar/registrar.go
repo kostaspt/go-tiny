@@ -8,10 +8,10 @@ import (
 var ProviderSet = wire.NewSet(New, NewEntries)
 
 type Registrar struct {
-	entries *entries
+	entries *Entries
 }
 
-func New(e *entries) *Registrar {
+func New(e *Entries) *Registrar {
 	return &Registrar{
 		entries: e,
 	}
