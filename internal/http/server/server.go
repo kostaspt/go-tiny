@@ -12,7 +12,6 @@ import (
 
 	"github.com/kostaspt/go-tiny/config"
 	"github.com/kostaspt/go-tiny/internal/http/handler"
-	"github.com/kostaspt/go-tiny/pkg/logger"
 	"github.com/kostaspt/go-tiny/pkg/validator"
 )
 
@@ -21,7 +20,6 @@ var ProviderSet = wire.NewSet(NewServer, NewMiddleware)
 func NewServer(c *config.Config, h *handler.Handler, m *Middleware) *transphttp.Server {
 	opts := []transphttp.ServerOption{
 		transphttp.Timeout(10 * time.Second),
-		transphttp.Logger(logger.NewForKratos()),
 	}
 
 	if c.Server.Port > 0 {
