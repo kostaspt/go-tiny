@@ -11,7 +11,7 @@ import (
 	"github.com/gosimple/slug"
 )
 
-var ProviderSet = wire.NewSet(NewRedis)
+var ProviderSet = wire.NewSet(NewInMemory, NewRedis)
 
 type Cache interface {
 	Get(ctx context.Context, key string, data any) error
