@@ -1,10 +1,12 @@
 module github.com/kostaspt/go-tiny
 
-go 1.17
+go 1.18
 
 require (
 	github.com/ThreeDotsLabs/watermill v1.1.1
+	github.com/doug-martin/goqu/v9 v9.18.0
 	github.com/gavv/httpexpect/v2 v2.3.1
+	github.com/georgysavva/scany v1.2.0
 	github.com/go-kratos/kratos/v2 v2.5.0
 	github.com/go-playground/validator/v10 v10.11.0
 	github.com/go-redis/redis/v8 v8.11.5
