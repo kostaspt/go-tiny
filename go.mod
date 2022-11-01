@@ -12,7 +12,7 @@ require (
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/golang-migrate/migrate/v4 v4.15.2
 	github.com/google/wire v0.5.0
-	github.com/gosimple/slug v1.13.0
+	github.com/gosimple/slug v1.13.1
 	github.com/hashicorp/go-retryablehttp v0.7.1
 	github.com/jackc/pgx/v4 v4.17.2
 	github.com/labstack/echo-contrib v0.13.0
