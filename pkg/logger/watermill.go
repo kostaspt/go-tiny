@@ -31,7 +31,12 @@ func (l Watermill) Trace(msg string, fields watermill.LogFields) {
 }
 
 func (l Watermill) With(fields watermill.LogFields) watermill.LoggerAdapter {
-	panic("implement me")
+	newLogger := log.With()
+	for k, v := range fields {
+		newLogger = newLogger.Interface(k, v)
+	}
+	log.Logger = newLogger.Logger()
+	return l
 }
 
 func (l Watermill) WithFields(e *zerolog.Event, fields watermill.LogFields) *zerolog.Event {
